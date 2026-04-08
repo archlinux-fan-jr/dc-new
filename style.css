@@ -204,6 +204,7 @@ body.light .side-panel::-webkit-scrollbar-thumb {
 }
 
 /* MOBILNA PRILAGODLJIVOST */
+/* MOBILNA PRILAGODLJIVOST */
 @media (max-width: 1000px) {
     .layout {
         flex-direction: column;
@@ -211,8 +212,8 @@ body.light .side-panel::-webkit-scrollbar-thumb {
     }
     
     .side-panel {
-        width: 100%;      /* Na telefonu naj bo čez cel zaslon */
-        flex: none;       /* Izklopi fiksno širino 200px */
+        width: 100%;      
+        flex: none;       
         height: auto;
         padding: 20px;
         overflow-y: visible;
@@ -221,11 +222,19 @@ body.light .side-panel::-webkit-scrollbar-thumb {
     .main-area {
         flex: none;
         padding: 100px 20px 40px 20px;
-        order: 1; /* Osel na vrhu */
+        order: 1;
     }
     
-    .left-panel { order: 3; border-right: none; border-top: 1px solid rgba(255,255,255,0.1); }
-    .right-panel { order: 2; border-left: none; border-top: 1px solid rgba(255,255,255,0.1); }
+    .left-panel { 
+        order: 2;
+        border-right: none; 
+        border-top: 1px solid rgba(255,255,255,0.1); 
+    } 
+    .right-panel { 
+        order: 3;
+        border-left: none; 
+        border-top: 1px solid rgba(255,255,255,0.1); 
+    }
 }
 
 /* DODATKI */

@@ -25,23 +25,23 @@ let autos = [
   {name:"Kiddo Donkey",       base:0.20,          cost:20,              	level:0},
   {name:"Farm Donkey",        base:1,             cost:500,             	level:0},
   {name:"Factory Donkey",     base:2,             cost:1000,             	level:0},
-  {name:"Mega Donkey",        base:5,            	cost:2500,           		level:0},
+  {name:"Mega Donkey",        base:5,            	cost:2000,           		level:0},
   {name:"Ultra Donkey",       base:10,           	cost:5000,           		level:0},
-  {name:"God Donkey",         base:20,           	cost:10000,           	level:0},
-  {name:"Galactic Donkey",    base:50,          	cost:25000,          		level:0},
+  {name:"God Donkey",         base:25,           	cost:10000,           	level:0},
+  {name:"Galactic Donkey",    base:50,          	cost:20000,          		level:0},
   {name:"Quantum Donkey",     base:100,         	cost:50000,         		level:0},
-  {name:"Multiverse Donkey",  base:200,         	cost:100000,        		level:0},
-  {name:"Portal Donkey",      base:500,        		cost:250000,        		level:0},
+  {name:"Multiverse Donkey",  base:250,         	cost:100000,        		level:0},
+  {name:"Portal Donkey",      base:500,        		cost:200000,        		level:0},
   {name:"Atomic Donkey",      base:1000,       		cost:500000,       			level:0},
   {name:"Nebula Donkey",      base:2500,       		cost:1000000,      			level:0},
-  {name:"Stellar Donkey",     base:5000,      		cost:2500000,     			level:0},
+  {name:"Stellar Donkey",     base:5000,      		cost:2000000,     			level:0},
   {name:"Cosmic Donkey",      base:10000,     		cost:5000000,    				level:0},
   {name:"Eternal Donkey",     base:25000,     		cost:10000000,   				level:0},
-  {name:"Infinity Donkey",    base:80000,    			cost:40000000,  				level:0},
-  {name:"Singularity Donkey", base:400000,   			cost:200000000, 				level:0},
-  {name:"Omni Donkey",        base:1000000,   		cost:500000000,					level:0},
-  {name:"Legendary Donkey",   base:50000000,  		cost:2500000000,				level:0},
-  {name:"Mythic Donkey",      base:999999999, 		cost:99999999999,				level:0}
+  {name:"Infinity Donkey",    base:50000,    			cost:20000000,  				level:0},
+  {name:"Singularity Donkey", base:100000,   			cost:50000000, 					level:0},
+  {name:"Omni Donkey",        base:250000,   			cost:1000000000,				level:0},
+  {name:"Legendary Donkey",   base:500000,  			cost:2000000000,				level:0},
+  {name:"Mythic Donkey",      base:999000000, 		cost:999000000000,			level:0}
 ];
 
 // 1. DINAMIČNE NADGRADNJE
@@ -55,11 +55,11 @@ let upgrades = [
   { name: "Double Click", 				desc: "x2 manual click", 						cost: 2000, 		bought: false, type: "clickMult", value: 2 },
   { name: "Two&Half Click",				desc: "x2.5 manual click", 					cost: 5000, 		bought: false, type: "clickMult", value: 2.5 },
   
-  { name: "Lucky Hoof",				desc: "10% chance for 2x click", 			cost: 12500, 			bought: false, type: "luck", chance: 0.1, mult: 2 },
+  { name: "Lucky Hoof",				desc: "10% chance for 2x click", 			cost: 8000, 			bought: false, type: "luck", chance: 0.1, mult: 2 },
    
   { name: "Ultra Click", 			desc: "x4 manual click", 							cost: 20000, 			bought: false, type: "clickMult", value: 4 },
   
-  { name: "Adrenaline",				desc: "Clicks x3 for 10s every 60s", 	cost: 60000, 			bought: false, type: "special", 	id: "adrenaline" },
+  { name: "Adrenaline",				desc: "Clicks x3 for 10s every 60s", 	cost: 80000, 			bought: false, type: "special", 	id: "adrenaline" },
   
   { name: "Treasure Click", 	desc: "1% chance to gain 1% of bank", cost: 99999, 		bought: false, type: "special", 	id: "treasure" },
    
@@ -67,17 +67,17 @@ let upgrades = [
  
   { name: "Cinco Click", 			desc: "x5 manual click", 							cost: 500000, 		bought: false, type: "clickMult", value: 5 },
   
-  { name: "Divine Hoof", 			desc: "50% chance for 5x click", 			cost: 1250000, 		bought: false, type: "luck", chance: 0.5, mult: 5 },
+  { name: "Divine Hoof", 			desc: "50% chance for 5x click", 			cost: 5005005, 		bought: false, type: "luck", chance: 0.5, mult: 5 },
   
-  { name: "God Click", 				desc: "x7 manual click", 							cost: 8750000, 		bought: false, type: "clickMult", value: 7 },
+  { name: "God Click", 				desc: "x7 manual click", 							cost: 7000000, 		bought: false, type: "clickMult", value: 7 },
   
   { name: "Mega Click", 			desc: "x10 manual click", 						cost: 100000000, 		bought: false, type: "clickMult", value: 10 },
   
-  { name: "Donkey rain", 			desc: "x3 farm every 10 mins for 2 mins", cost: 1000000000,bought: false, type: "special", 	id: "rain" },
-  
-  { name: "Quantum Click",		desc: "x20 manual click", 						cost: 3000000000, 	bought: false, type: "clickMult", value: 20 },
-  { name: "OMG Click", 				desc: "x100 manual click", 						cost: 500000000000,	bought: false, type: "clickMult", value: 100 },
-  { name: "Infinity Click", 	desc: "x999 manual click", 						cost: 999999999999999,bought: false, type: "clickMult", value: 999 }
+  { name: "Donkey rain", 			desc: "x3 farm every 10 mins for 2 mins", cost: 800000000,bought: false, type: "special", 	id: "rain" },
+  																																				
+  { name: "Quantum Click",		desc: "x20 manual click", 						cost: 2000000000, 	bought: false, type: "clickMult", value: 20 },
+  { name: "OMG Click", 				desc: "x50 manual click", 						cost: 50000000000,	bought: false, type: "clickMult", value: 50 },
+  { name: "Infinity Click", 	desc: "x999 manual click", 						cost: 9990000000000,bought: false, type: "clickMult", value: 999 }
   
 ];
 
