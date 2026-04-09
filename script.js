@@ -9,6 +9,7 @@ let activeTimer = null;
 let lastUnlockState = "";
 let autoSpeedMultiplier = 1; // Začnemo z 1x hitrostjo
 let autoInterval = null;     // Shramba za interval, da ga lahko ponastavimo
+let keysPressed = {}; // Tukaj bomo beležili, katera tipka je pritisnjena
 
 // Statistika za posebne nadgradnje
 let rainUnlocked = false;
@@ -50,33 +51,33 @@ let autos = [
 let upgrades = [
   { name: "Baby Double Click",		desc: "x2 manual click", 						cost:	5, 				bought: false, type: "clickMult", value: 2 },
   { name: "Baby Two&Half Click", 	desc: "x2.5 manual click",					cost: 20, 			bought: false, type: "clickMult", value: 2.5 },
-  { name: "Baby Cinco Click", 		desc: "x5 manual click", 						cost: 125, 			bought: false, type: "clickMult", value: 5 },
-  { name: "Full Click", 					desc: "First Full click", 					cost: 500, 			bought: false, type: "clickMult", value: 4 },
-  { name: "Double Click", 				desc: "x2 manual click", 						cost: 1000, 		bought: false, type: "clickMult", value: 2 },
-  { name: "Combo Starter", 				desc: "Clicks stack combo (max x2)",cost: 2000, 		bought: false, type: "combo", 		value: 2 },
-  { name: "Two&Half Click", 			desc: "x2.5 manual click", 					cost: 5000, 		bought: false, type: "clickMult", value: 2.5 },
+  { name: "Baby Cinco Click", 		desc: "x5 manual click", 						cost: 50, 			bought: false, type: "clickMult", value: 5 },
+  { name: "Full Click", 					desc: "First Full click", 					cost: 250, 			bought: false, type: "clickMult", value: 4 },
+  { name: "Double Click", 				desc: "x2 manual click", 						cost: 5000, 		bought: false, type: "clickMult", value: 2 },
+  { name: "Combo Starter", 				desc: "Clicks stack combo (max x2)",cost: 1000, 		bought: false, type: "combo", 		value: 2 },
+  { name: "Two&Half Click", 			desc: "x2.5 manual click", 					cost: 2500, 		bought: false, type: "clickMult", value: 2.5 },
   
-	{	name: "Turbo Carrot", 				desc: "Auto farmers work 2x faster",cost: 10000, 			bought: false, type: "autoSpeed", value: 2 },
+	{	name: "Turbo Donkey", 				desc: "Auto farmers work 2x faster",cost: 5000, 			bought: false, type: "autoSpeed", value: 2 },
   
-  { name: "Lucky Hoof",						desc: "10% chance for 2x click", 		cost: 15000, 		bought: false, type: "luck", chance: 0.1, mult: 2 },
-  { name: "Big Combo Starter", 		desc: "Clicks stack combo (max x5)",cost: 50000, 		bought: false, type: "combo", 		value: 2.5 },
+  { name: "Lucky Hoof",						desc: "10% chance for 2x click", 		cost: 7500, 		bought: false, type: "luck", chance: 0.1, mult: 2 },
+  { name: "Big Combo Starter", 		desc: "Clicks stack combo (max x5)",cost: 25000, 		bought: false, type: "combo", 		value: 2.5 },
   
   { name: "Treasure Click", 	desc: "1% chance to gain 1% of bank", cost: 99999, 			bought: false, type: "special", 	id: "treasure" },
    
-  { name: "Ultra Click", 			desc: "x4 manual click", 							cost: 200000, 		bought: false, type: "clickMult", value: 4 },
+  { name: "Ultra Click", 			desc: "x4 manual click", 							cost: 100000, 		bought: false, type: "clickMult", value: 4 },
   
-  { name: "Big Boy Combo",		desc: "Clicks stack combo (max x10)",	cost: 400000, 		bought: false, type: "combo", 		value: 2 },
+  { name: "Big Boy Combo",		desc: "Clicks stack combo (max x10)",	cost: 200000, 		bought: false, type: "combo", 		value: 2 },
   
-  { name: "Adrenaline",				desc: "Clicks x3 for 10s every 1min", cost: 500000, 		bought: false, type: "special", 	id: "adrenaline" },
+  { name: "Adrenaline",				desc: "Clicks x3 for 10s every 1min", cost: 250000, 		bought: false, type: "special", 	id: "adrenaline" },
   
 
-  { name: "Mega Combo",				desc: "Clicks stack combo (max x20)",	cost: 1000000, 		bought: false, type: "combo", 		value: 2 },   
+  { name: "Mega Combo",				desc: "Clicks stack combo (max x20)",	cost: 500000, 		bought: false, type: "combo", 		value: 2 },   
  
-  { name: "Cinco Click", 			desc: "x5 manual click", 							cost: 5000000, 		bought: false, type: "clickMult", value: 5 },
+  { name: "Cinco Click", 			desc: "x5 manual click", 							cost: 2500000, 		bought: false, type: "clickMult", value: 5 },
   
-  { name: "Divine Hoof", 			desc: "50% chance for 5x click", 			cost: 12500000, 	bought: false, type: "luck", chance: 0.5, mult: 5 },
+  { name: "Divine Hoof", 			desc: "50% chance for 5x click", 			cost: 10000000, 	bought: false, type: "luck", chance: 0.5, mult: 5 },
   
-  {	name: "Super Fertilizer", desc: "Auto farmers work 3x faster",	cost: 50000000, 	bought: false, type: "autoSpeed", value: 3 },
+  {	name: "Super Donkey", 		desc: "Auto farmers work 3x faster",	cost: 50000000, 	bought: false, type: "autoSpeed", value: 3 },
   
   { name: "God Click", 				desc: "x7.5 manual click", 						cost: 150000000, 	bought: false, type: "clickMult", value: 7.5 },
   
@@ -214,17 +215,26 @@ donkeyImg.addEventListener("touchstart", function(e) {
 }, {passive: false});
 
 // POSLUŠALEC ZA TIPKOVNICO (Space, Puščica levo, Puščica desno)
+// 1. Zaznavanje PRITISKA tipke (keydown)
 document.addEventListener("keydown", function(e) {
-    // Preverimo, če je pritisnjena tipka Space (Koda: "Space") 
-    // ali puščici (Koda: "ArrowLeft", "ArrowRight")
     if (e.code === "Space" || e.code === "ArrowLeft" || e.code === "ArrowRight") {
-        
-        // Preprečimo privzeto obnašanje (npr. da bi Space premaknil stran navzdol)
         e.preventDefault();
         
-        // Sprožimo isto logiko kot pri kliku na miško
-        animateDonkey();
-        clickDonkey();
+        // ČE TIPKA ŠE NI PRITISNJENA (prepreči držanje)
+        if (!keysPressed[e.code]) {
+            keysPressed[e.code] = true; // Označimo, da je tipka zdaj pritisnjena
+            
+            animateDonkey();
+            clickDonkey();
+        }
+    }
+});
+
+// 2. Zaznavanje SPROSTITVE tipke (keyup)
+document.addEventListener("keyup", function(e) {
+    if (e.code === "Space" || e.code === "ArrowLeft" || e.code === "ArrowRight") {
+        // Ko igralec dvigne prst, tipko "odklenemo" za naslednji klik
+        keysPressed[e.code] = false;
     }
 });
 
@@ -269,19 +279,8 @@ function restartAutoInterval() {
     }, newIntervalTime);
 }
 
-// Na koncu script.js (namesto starega setIntervala) pokliči:
-restartAutoInterval();
 
-// SPECIAL EVENTI
-/*
-setInterval(() => {
-    if (cps > 0) {
-        clicks += cps;
-        spawnFloating("+" + format(cps), true);
-        update(); // To zdaj ne bo več "skakalo"
-    }
-}, 1000);
-*/
+
 function updateTimer(seconds) {
   let timerEl = document.getElementById("eventTimer");
   
@@ -495,6 +494,7 @@ function save(){
 
 function load() {
   let d = JSON.parse(localStorage.getItem("donkeySave"));
+  window.onblur = function() { keysPressed = {}; };
   if (d) {
     clicks = d.clicks || 0;
     maxCombo = 1; // Začnemo pri 1 in nato preračunamo vse kupljeno
@@ -517,8 +517,6 @@ function load() {
 						autoSpeedMultiplier *= upgrades[i].value;
 				}
       }
-			// Na koncu funkcije load() pokliči restart:
-			restartAutoInterval();
     });
     
     // Ponovno zaženi cikle, če so bili kupljeni
@@ -526,6 +524,8 @@ function load() {
     if (upgrades.find(u => u.id === "adrenaline" && u.bought)) startAdrenalineCycle();
   }
   updateCPS();
+	// Na koncu funkcije load() pokliči restart:
+	restartAutoInterval();
 }
 
 function resetGame(){ localStorage.clear(); location.reload(); }
@@ -533,57 +533,3 @@ function toggleTheme(){ document.body.classList.toggle("light"); }
 
 load();
 update();
-
-// toggle console
-document.getElementById("devTrigger").onclick = () => {
-  let c = document.getElementById("devConsole");
-  c.style.display = c.style.display === "none" ? "block" : "none";
-};
-
-// input handler
-document.getElementById("devInput").addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    let input = e.target.value.trim();
-    handleCommand(input);
-    e.target.value = "";
-  }
-});
-
-function handleCommand(cmd) {
-  try {
-    if (!cmd.startsWith("$")) return;
-
-    let [key, value] = cmd.split("=");
-    key = key.toLowerCase();
-    value = Number(value);
-
-    if (!isFinite(value) || value < 0) return;
-
-    // 💰 MONEY (exact set)
-    if (key === "$money") {
-      clicks = value;
-    }
-
-    // 🏭 AUTO (SET CPS DIRECTLY instead of levels)
-    if (key === "$auto") {
-      cps = value; // 🔥 THIS FIXES BILLION BUG
-    }
-
-    // 🖱 CLICK (force override)
-    if (key === "$click") {
-      perClick = value;
-
-      // force UI update immediately
-      document.getElementById("perClick").innerText = format(perClick);
-    }
-
-    // update UI only (DO NOT recalc CPS after auto command)
-    document.getElementById("clicks").innerText = format(clicks);
-    document.getElementById("cps").innerText = format(cps);
-
-    save();
-
-  } catch (e) {
-    console.log("Invalid command");
-  }
-}
