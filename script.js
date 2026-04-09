@@ -1,5 +1,5 @@
 
-let clicks = 0;
+let clicks = 255555050;
 let basePerClick = 0.01;
 let perClick = 0.01;
 let cps = 0;
@@ -29,22 +29,22 @@ let autos = [
   {name:"Farm Donkey",        base:1,             cost:200,             	level:0},
   {name:"Factory Donkey",     base:2,             cost:500,             	level:0},
   {name:"Mega Donkey",        base:5,            	cost:1250,           		level:0},
-  {name:"Ultra Donkey",       base:10,           	cost:2500,           		level:0},
-  {name:"God Donkey",         base:25,           	cost:5000,           		level:0},
-  {name:"Galactic Donkey",    base:50,          	cost:12500,          		level:0},
-  {name:"Quantum Donkey",     base:100,         	cost:25000,         		level:0},
-  {name:"Multiverse Donkey",  base:250,         	cost:50000,        			level:0},
-  {name:"Portal Donkey",      base:500,        		cost:125000,        		level:0},
-  {name:"Atomic Donkey",      base:1000,       		cost:250000,       			level:0},
-  {name:"Nebula Donkey",      base:2500,       		cost:500000,      			level:0},
-  {name:"Stellar Donkey",     base:5000,      		cost:1250000,     			level:0},
-  {name:"Cosmic Donkey",      base:10000,     		cost:2500000,    				level:0},
-  {name:"Eternal Donkey",     base:25000,     		cost:5000000,   				level:0},
-  {name:"Infinity Donkey",    base:50000,    			cost:12500000,  				level:0},
-  {name:"Singularity Donkey", base:100000,   			cost:25000000, 					level:0},
-  {name:"Omni Donkey",        base:250000,   			cost:500000000,					level:0},
-  {name:"Legendary Donkey",   base:500000,  			cost:1250000000,				level:0},
-  {name:"Mythic Donkey",      base:999000000, 		cost:999000000000,			level:0}
+  {name:"Ultra Donkey",       base:10,           	cost:3000,           		level:0},
+  {name:"God Donkey",         base:25,           	cost:12500,           	level:0},
+  {name:"Galactic Donkey",    base:50,          	cost:25000,          		level:0},
+  {name:"Quantum Donkey",     base:100,         	cost:50000,         		level:0},
+  {name:"Multiverse Donkey",  base:250,         	cost:100000,        		level:0},
+  {name:"Portal Donkey",      base:500,        		cost:250000,        		level:0},
+  {name:"Atomic Donkey",      base:1000,       		cost:500000,       			level:0},
+  {name:"Nebula Donkey",      base:2500,       		cost:1000000,      			level:0},
+  {name:"Stellar Donkey",     base:5000,      		cost:2500000,     			level:0},
+  {name:"Cosmic Donkey",      base:10000,     		cost:10000000,    			level:0},
+  {name:"Eternal Donkey",     base:25000,     		cost:25000000,   				level:0},
+  {name:"Infinity Donkey",    base:50000,    			cost:500000000,  				level:0},
+  {name:"Singularity Donkey", base:100000,   			cost:1000000000, 				level:0},
+  {name:"Omni Donkey",        base:250000,   			cost:2500000000,				level:0},
+  {name:"Legendary Donkey",   base:500000,  			cost:5000000000,				level:0},
+  {name:"Mythic Donkey",      base:99900000, 			cost:999000000000,			level:0}
 ];
 
 // 1. DINAMIČNE NADGRADNJE
@@ -53,41 +53,41 @@ let upgrades = [
   { name: "Baby Two&Half Click", 	desc: "x2.5 manual click",					cost: 20, 			bought: false, type: "clickMult", value: 2.5 },
   { name: "Baby Cinco Click", 		desc: "x5 manual click", 						cost: 50, 			bought: false, type: "clickMult", value: 5 },
   { name: "Full Click", 					desc: "First Full click", 					cost: 250, 			bought: false, type: "clickMult", value: 4 },
-  { name: "Double Click", 				desc: "x2 manual click", 						cost: 500, 		bought: false, type: "clickMult", value: 2 },
+  { name: "Double Click", 				desc: "x2 manual click", 						cost: 500, 			bought: false, type: "clickMult", value: 2 },
   { name: "Combo Starter", 				desc: "Clicks stack combo (max x2)",cost: 1000, 		bought: false, type: "combo", 		value: 2 },
   { name: "Two&Half Click", 			desc: "x2.5 manual click", 					cost: 2500, 		bought: false, type: "clickMult", value: 2.5 },
   
-	{	name: "Turbo Donkey", 				desc: "Auto farmers work 2x faster",cost: 5000, 			bought: false, type: "autoSpeed", value: 2 },
+  { name: "Big Combo Starter", 		desc: "Clicks stack combo (max x5)",cost: 5000, 		bought: false, type: "combo", 		value: 2.5 },
   
-  { name: "Lucky Hoof",						desc: "10% chance for 2x click", 		cost: 7500, 		bought: false, type: "luck", chance: 0.1, mult: 2 },
-  { name: "Big Combo Starter", 		desc: "Clicks stack combo (max x5)",cost: 25000, 		bought: false, type: "combo", 		value: 2.5 },
+	{	name: "Turbo Donkey", 				desc: "Auto farmers work 1.5x faster",cost: 7500, 	bought: false, type: "autoSpeed", value: 1.5 },
   
-  { name: "Treasure Click", 	desc: "1% chance to gain 1% of bank", cost: 99999, 			bought: false, type: "special", 	id: "treasure" },
+  { name: "Lucky Hoof",						desc: "20% chance for 2x click", 	cost: 10000, 			bought: false, type: "luck", chance: 0.2, mult: 2 },
    
-  { name: "Ultra Click", 			desc: "x4 manual click", 							cost: 100000, 		bought: false, type: "clickMult", value: 4 },
-  
-  { name: "Big Boy Combo",		desc: "Clicks stack combo (max x10)",	cost: 200000, 		bought: false, type: "combo", 		value: 2 },
-  
-  { name: "Adrenaline",				desc: "Clicks x3 for 10s every 1min", cost: 250000, 		bought: false, type: "special", 	id: "adrenaline" },
-  
+  { name: "Adrenaline",				desc: "Clicks x3 for 10s every 1min", cost: 15000, 			bought: false, type: "special", 	id: "adrenaline" },
 
-  { name: "Mega Combo",				desc: "Clicks stack combo (max x20)",	cost: 500000, 		bought: false, type: "combo", 		value: 2 },   
+  { name: "Ultra Click", 			desc: "x4 manual click", 							cost: 25000, 			bought: false, type: "clickMult", value: 4 },
+  
+  { name: "Big Boy Combo",		desc: "Clicks stack combo (max x10)",	cost: 80000, 			bought: false, type: "combo", 		value: 2 },
+  
+  { name: "Treasure Click", 	desc: "1% chance to gain 1% of bank", cost: 100000, 		bought: false, type: "special", 	id: "treasure" },
+
+  { name: "Mega Combo",				desc: "Clicks stack combo (max x20)",	cost: 200000, 		bought: false, type: "combo", 		value: 2 },   
  
-  { name: "Cinco Click", 			desc: "x5 manual click", 							cost: 2500000, 		bought: false, type: "clickMult", value: 5 },
+  { name: "Cinco Click", 			desc: "x5 manual click", 							cost: 500000, 		bought: false, type: "clickMult", value: 5 },
   
-  { name: "Divine Hoof", 			desc: "50% chance for 5x click", 			cost: 10000000, 	bought: false, type: "luck", chance: 0.5, mult: 5 },
+  { name: "Divine Hoof", 			desc: "25% chance for 5x click", 			cost: 2500000, 		bought: false, type: "luck", chance: 0.25, mult: 5 },
   
-  {	name: "Super Donkey", 		desc: "Auto farmers work 3x faster",	cost: 50000000, 	bought: false, type: "autoSpeed", value: 3 },
+  { name: "God Click", 				desc: "x7.5 manual click", 						cost: 7500000, 		bought: false, type: "clickMult", value: 7.5 },
   
-  { name: "God Click", 				desc: "x7.5 manual click", 						cost: 150000000, 	bought: false, type: "clickMult", value: 7.5 },
+  {	name: "Super Donkey", 		desc: "Auto farmers work 3x faster",	cost: 15000000, 	bought: false, type: "autoSpeed", value: 2 },
   
-  { name: "Mega Click", 			desc: "x10 manual click", 						cost: 1500000000, 	bought: false, type: "clickMult", value: 10 },
+  { name: "Mega Click", 			desc: "x10 manual click", 						cost: 150000000, 	bought: false, type: "clickMult", value: 10 },
   
-  { name: "Donkey rain", 			desc: "x3 farm every 10 mins for 2 mins", cost: 2500000000,bought: false, type: "special", 	id: "rain" },
+  { name: "Donkey rain", 			desc: "x3 farm every 5 mins for 1 min", cost: 250000000,bought: false, type: "special", 	id: "rain" },
   																																				
-  { name: "Quantum Click",		desc: "x20 manual click", 						cost: 50000000000, 	bought: false, type: "clickMult", value: 20 },
-  { name: "OMG Click", 				desc: "x50 manual click", 						cost: 20000000000000,	bought: false, type: "clickMult", value: 50 },
-  { name: "Infinity Click", 	desc: "x999 manual click", 						cost: 9990000000000000,bought: false, type: "clickMult", value: 999 }
+  { name: "Quantum Click",		desc: "x20 manual click", 						cost: 5000000000, 	bought: false, type: "clickMult", value: 20 },
+  { name: "OMG Click", 				desc: "x50 manual click", 						cost: 200000000000,	bought: false, type: "clickMult", value: 50 },
+  { name: "Infinity Click", 	desc: "x999 manual click", 						cost: 999000000000000,bought: false, type: "clickMult", value: 999 }
   
 ];
 
@@ -113,20 +113,27 @@ function format(n) {
 }
 
 function calculatePerClick() {
-  let power = basePerClick;
+    let power = basePerClick;
 
-  // Samo še množenje (Double Click, OMG Click itd.)
-  upgrades.forEach(u => {
-    if (u.bought && u.type === "clickMult") {
-      power *= u.value;
-    }
-  });
+    upgrades.forEach(u => {
+        if (u.bought) {
+            if (u.type === "clickMult") {
+                power *= u.value;
+            }
+            // Super Donkey (autoSpeed) zdaj doda 20% k moči manualnega klika
+            if (u.type === "autoSpeed") {
+                power *= 1.2; 
+            }
+        }
+    });
 
-  // Začasni bonusi
-  power *= combo;
-  if (adrenalineActive) power *= 3;
+    power *= combo;
+    if (adrenalineActive) power *= 3;
+    
+    // DODANO: Donkey Rain zdaj množi tudi manualni klik z x3!
+    power *= tempBoost; 
 
-  return power;
+    return power;
 }
 
 function clickDonkey(){
@@ -255,8 +262,9 @@ function buyUpgrade(i) {
       else maxCombo *= u.value;
     }
 
-    if (u.id === "rain") startRainCycle();
-    if (u.id === "adrenaline") startAdrenalineCycle();
+		// V funkciji buyUpgrade spremeni vrstici:
+    if (u.id === "rain") startRainCycle(60);       // Ob nakupu zaženi za 60s
+    if (u.id === "adrenaline") startAdrenalineCycle(10); // Ob nakupu zaženi za 10s
 
     updateCPS();
     update();
@@ -281,51 +289,87 @@ function restartAutoInterval() {
 
 
 
-function updateTimer(seconds) {
-  let timerEl = document.getElementById("eventTimer");
-  
-  // Počistimo prejšnji timer, če obstaja, da ne tečeta dva hkrati
-  if (activeTimer) clearTimeout(activeTimer);
+function updateTimer() {
+    let timerEl = document.getElementById("eventTimer");
+    if (activeTimer) clearTimeout(activeTimer); // Počistimo stari timeout
 
-  if (seconds <= 0) {
-    timerEl.innerText = "";
-    document.body.classList.remove("event-active");
-    return;
-  }
-  
-  document.body.classList.add("event-active");
-  let min = Math.floor(seconds / 60);
-  let sec = seconds % 60;
-  timerEl.innerText = `SPECIAL EVENT: ${min}:${sec < 10 ? '0' : ''}${sec}`;
-  
-  activeTimer = setTimeout(() => updateTimer(seconds - 1), 1000);
+    let adrEnd = parseInt(localStorage.getItem("adrenalineEndTime") || 0);
+    let rainEnd = parseInt(localStorage.getItem("rainEndTime") || 0);
+    let now = Date.now();
+
+    let adrSec = Math.max(0, Math.floor((adrEnd - now) / 1000));
+    let rainSec = Math.max(0, Math.floor((rainEnd - now) / 1000));
+
+    // Če nobena stvar ne teče, skrij timer
+    if (adrSec <= 0 && rainSec <= 0) {
+        timerEl.innerText = "";
+        document.body.classList.remove("event-active");
+        adrenalineActive = false; // Za vsak slučaj ugasnemo status
+        tempBoost = 1;
+        return;
+    }
+
+    document.body.classList.add("event-active");
+
+    if (adrSec > 0 && rainSec > 0) {
+        timerEl.innerHTML = `<span style="color: #ff6b6b; animation: doubleGlow 1s infinite;">🔥 DOUBLE EVENT 🔥</span><br>
+                             Adrenaline: ${adrSec}s | Rain: ${formatTime(rainSec)}`;
+    } else if (adrSec > 0) {
+        timerEl.innerText = `ADRENALINE: ${adrSec}s`;
+        timerEl.style.color = "#ff6b6b";
+    } else if (rainSec > 0) {
+        timerEl.innerText = `DONKEY RAIN: ${formatTime(rainSec)}`;
+        timerEl.style.color = "gold";
+    }
+
+    // Shranimo timeout v globalno spremenljivko activeTimer
+    activeTimer = setTimeout(updateTimer, 1000);
 }
 
-// Popravi startRainCycle, da sproži timer
-function startRainCycle() {
-  setInterval(() => {
-    tempBoost = 3;
-    updateCPS();
-    updateTimer(120); // 2 minuti (120s)
-    
-    setTimeout(() => {
-      tempBoost = 1;
-      updateCPS();
-    }, 120000);
-  }, 600000);
+// Pomožna funkcija za lepši izpis minut/sekund
+function formatTime(seconds) {
+  let m = Math.floor(seconds / 60);
+  let s = seconds % 60;
+  return `${m}:${s < 10 ? '0' : ''}${s}`;
 }
 
-function startAdrenalineCycle() {
-  setInterval(() => {
-    adrenalineActive = true;
-    updateTimer(10); // Timer nastavimo na 10 sekund
-    
-    // Adrenalin traja 10 sekund (10000 ms)
-    setTimeout(() => {
-      adrenalineActive = false;
-    }, 10000); 
-    
-  }, 60000); // Dogodek se sproži vsakih 60 sekund
+
+function startAdrenalineCycle(remainingSeconds = 0) {
+    const activateAdrenaline = (secs = 10) => {
+        adrenalineActive = true;
+        localStorage.setItem("adrenalineEndTime", Date.now() + (secs * 1000));
+        
+        update();      // Takoj preračunaj manual click vrednost
+        updateTimer(); // Takoj zaženi vidni timer
+
+        setTimeout(() => {
+            adrenalineActive = false;
+            update();  // Ponastavi vrednosti po koncu
+        }, secs * 1000);
+    };
+
+    if (remainingSeconds > 0) activateAdrenaline(remainingSeconds);
+    setInterval(() => activateAdrenaline(10), 60000);
+}
+
+function startRainCycle(remainingSeconds = 0) {
+    const activateRain = (secs = 60) => {
+        tempBoost = 3;
+        updateCPS();
+        update();      // Takoj preračunaj manual click vrednost
+        localStorage.setItem("rainEndTime", Date.now() + (secs * 1000));
+        
+        updateTimer(); // Takoj zaženi vidni timer
+
+        setTimeout(() => {
+            tempBoost = 1;
+            updateCPS();
+            update();  // Ponastavi vrednosti po koncu
+        }, secs * 1000);
+    };
+
+    if (remainingSeconds > 0) activateRain(remainingSeconds);
+    setInterval(() => activateRain(60), 300000);
 }
 
 function buyAuto(i){
@@ -345,6 +389,7 @@ function updateCPS(){
   cps = 0;
   autos.forEach(a=> cps += a.level * a.base);
   cps *= autoMultiplier * tempBoost;
+  if (adrenalineActive) cps *= 2;
 }
 
 function spawnFloating(text, isAuto = false) {
@@ -495,37 +540,62 @@ function save(){
 function load() {
   let d = JSON.parse(localStorage.getItem("donkeySave"));
   window.onblur = function() { keysPressed = {}; };
+  
   if (d) {
     clicks = d.clicks || 0;
-    maxCombo = 1; // Začnemo pri 1 in nato preračunamo vse kupljeno
+    maxCombo = 1;
 
     if (d.autos) d.autos.forEach((a, i) => { 
       if (autos[i]) { autos[i].level = a.level; autos[i].cost = a.cost; } 
     });
 
+    // Ponastavi multiplierje pred preračunom
+    autoSpeedMultiplier = 1; 
+
     if (d.upgrades) d.upgrades.forEach((u, i) => { 
       if (upgrades[i]) {
         upgrades[i].bought = u.bought;
         
-        // Ponovno preračunaj maxCombo za vse, kar je že bilo kupljeno v save-u
         if (upgrades[i].bought && upgrades[i].type === "combo") {
           if (maxCombo === 1) maxCombo = upgrades[i].value;
           else maxCombo *= upgrades[i].value;
         }
-        // V funkciji load(), znotraj upgrades.forEach dodaj:
-				if (upgrades[i].bought && upgrades[i].type === "autoSpeed") {
-						autoSpeedMultiplier *= upgrades[i].value;
-				}
+        if (upgrades[i].bought && upgrades[i].type === "autoSpeed") {
+          autoSpeedMultiplier *= upgrades[i].value;
+        }
       }
     });
     
-    // Ponovno zaženi cikle, če so bili kupljeni
-    if (upgrades.find(u => u.id === "rain" && u.bought)) startRainCycle();
-    if (upgrades.find(u => u.id === "adrenaline" && u.bought)) startAdrenalineCycle();
+    // Šele ko so vsi podatki naloženi, zaženemo cikle
+    // Preveri Adrenalin
+    if (upgrades.find(u => u.id === "adrenaline" && u.bought)) {
+        let endTime = localStorage.getItem("adrenalineEndTime");
+        let diff = endTime ? Math.floor((endTime - Date.now()) / 1000) : 0;
+        
+        if (diff > 0) {
+            startAdrenalineCycle(diff); // Nadaljuj preostanek
+        } else {
+            startAdrenalineCycle(0);    // Samo zaženi interval (bo čakal 60s)
+        }
+    }
+
+    // Preveri Rain
+    if (upgrades.find(u => u.id === "rain" && u.bought)) {
+        let endTime = localStorage.getItem("rainEndTime");
+        let diff = endTime ? Math.floor((endTime - Date.now()) / 1000) : 0;
+        
+        if (diff > 0) {
+            startRainCycle(diff); // Nadaljuj preostanek
+        } else {
+            startRainCycle(0);    // Samo zaženi interval
+        }
+    }
   }
+  
   updateCPS();
-	// Na koncu funkcije load() pokliči restart:
-	restartAutoInterval();
+  update(); // Osveži izpise
+  restartAutoInterval(); // Pokliči ENKRAT na koncu
+  updateTimer(); // DODAJ TOLE VRSTICO!
 }
 
 function resetGame(){ localStorage.clear(); location.reload(); }

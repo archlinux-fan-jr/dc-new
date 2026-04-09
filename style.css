@@ -130,6 +130,18 @@ body.event-active {
     text-shadow: 0 0 10px rgba(255, 69, 0, 0.5), 2px 2px 4px rgba(0,0,0,0.5) !important;
     z-index: 15;
 }
+/* Posebna animacija, ko gori Double Event */
+@keyframes doubleGlow {
+  0% { text-shadow: 0 0 10px #ff6b6b; }
+  50% { text-shadow: 0 0 20px #ffd93d, 0 0 30px #ff6b6b; }
+  100% { text-shadow: 0 0 10px #ff6b6b; }
+}
+
+#eventTimer span {
+  animation: doubleGlow 1s infinite;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
 
 /* Jackpot efekt */
 .main-area.jackpot-active {
