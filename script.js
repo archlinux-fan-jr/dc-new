@@ -53,7 +53,7 @@ let upgrades = [
   { name: "Baby Two&Half Click", 	desc: "x2.5 manual click",					cost: 20, 			bought: false, type: "clickMult", value: 2.5 },
   { name: "Baby Cinco Click", 		desc: "x5 manual click", 						cost: 50, 			bought: false, type: "clickMult", value: 5 },
   { name: "Full Click", 					desc: "First Full click", 					cost: 250, 			bought: false, type: "clickMult", value: 4 },
-  { name: "Double Click", 				desc: "x2 manual click", 						cost: 5000, 		bought: false, type: "clickMult", value: 2 },
+  { name: "Double Click", 				desc: "x2 manual click", 						cost: 500, 		bought: false, type: "clickMult", value: 2 },
   { name: "Combo Starter", 				desc: "Clicks stack combo (max x2)",cost: 1000, 		bought: false, type: "combo", 		value: 2 },
   { name: "Two&Half Click", 			desc: "x2.5 manual click", 					cost: 2500, 		bought: false, type: "clickMult", value: 2.5 },
   
